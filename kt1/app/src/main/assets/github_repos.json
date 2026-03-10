@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "full_name": "JetBrains/kotlin",
+    "description": "The Kotlin Programming Language",
+    "stargazers_count": 48000,
+    "language": "Kotlin"
+  },
+  {
+    "id": 2,
+    "full_name": "square/okhttp",
+    "description": "Square’s meticulous HTTP client for the JVM, Android, and GraalVM.",
+    "stargazers_count": 45700,
+    "language": "Kotlin"
+  },
+  {
+    "id": 3,
+    "full_name": "square/retrofit",
+    "description": "A type-safe HTTP client for Android and JVM",
+    "stargazers_count": 43000,
+    "language": "Java"
+  },
+  {
+    "id": 4,
+    "full_name": "google/gson",
+    "description": "A Java serialization/deserialization library to convert Java Objects into JSON and back",
+    "stargazers_count": 23400,
+    "language": "Java"
+  },
+  {
+    "id": 5,
+    "full_name": "ReactiveX/RxJava",
+    "description": "RxJava – Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM.",
+    "stargazers_count": 48000,
+    "language": "Java"
+  },
+  {
+    "id": 6,
+    "full_name": "bumptech/glide",
+    "description": "An image loading and caching library for Android focused on smooth scrolling",
+    "stargazers_count": 34600,
+    "language": "Java"
+  },
+  {
+    "id": 7,
+    "full_name": "CymChad/BaseRecyclerViewAdapterHelper",
+    "description": "BRVAH:Powerful and flexible RecyclerView Adapter",
+    "stargazers_count": 24300,
+    "language": "Java"
+  },
+  {
+    "id": 8,
+    "full_name": "google/iosched",
+    "description": "The Google I/O Android App",
+    "stargazers_count": 21800,
+    "language": "Kotlin"
+  },
+  {
+    "id": 9,
+    "full_name": "JakeWharton/butterknife",
+    "description": "Bind Android views and callbacks to fields and methods.",
+    "stargazers_count": 25600,
+    "language": "Java"
+  },
+  {
+    "id": 10,
+    "full_name": "greenrobot/EventBus",
+    "description": "Event bus for Android and Java that simplifies communication between Activities, Fragments, Threads, Services, etc.",
+    "stargazers_count": 24600,
+    "language": "Java"
+  }
+]
