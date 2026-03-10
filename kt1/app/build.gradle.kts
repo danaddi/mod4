@@ -30,7 +30,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-        encoding = "UTF-8"
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -40,13 +39,6 @@ android {
     }
 }
 
-tasks.withType<JavaCompile> {
-    options.encoding = "UTF-8"
-}
-
-tasks.withType<Test> {
-    systemProperty("file1.encoding", "UTF-8")
-}
 
 dependencies {
 

@@ -1,7 +1,6 @@
 package com.example.kt1
 
 import kotlinx.coroutines.*
-import kotlinx.coroutines.selects.select
 import kotlin.system.measureTimeMillis
 import kotlin.random.Random
 
@@ -96,9 +95,7 @@ fun main() {
             val salesResult = salesDeferred.await()
             val weatherResult = weatherDeferred.await()
 
-            println("\n" + "=".repeat(50))
             println("РЕЗУЛЬТАТЫ ВЫПОЛНЕНИЯ:")
-            println("=".repeat(50))
 
             val allSuccess = listOf(usersResult, salesResult, weatherResult).all { it.isSuccess }
 
@@ -133,9 +130,7 @@ fun main() {
                 }
             }
         }
-        println("\n" + "=".repeat(50))
         println("Общее время выполнения: ${totalTime}мс")
-        println("=".repeat(50))
 
     }
 }
