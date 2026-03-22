@@ -18,7 +18,7 @@ fun startWeatherWork(context: Context) {
 
         OneTimeWorkRequestBuilder<WeatherWorker>()
             .setInputData(data)
-            .addTag(city)  // Добавляем тег для идентификации города
+            .addTag(city)
             .build()
     }
 

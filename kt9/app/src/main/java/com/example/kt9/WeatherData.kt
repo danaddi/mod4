@@ -7,8 +7,8 @@ data class WeatherData(
 )
 
 enum class WeatherStatus {
-    PENDING,    // Ожидание
-    LOADING,    // Загружается
-    SUCCEEDED,  // Готово
-    FAILED      // Ошибка
+    PENDING,
+    LOADING,
+    SUCCEEDED,
+    FAILED
 }

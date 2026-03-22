@@ -25,7 +25,6 @@ class WeatherWorker(
 
         val temp = (-5..25).random()
 
-        // Передаем результат с индексом для правильной сборки
         val output = Data.Builder()
             .putString("city", city)
             .putInt("temp", temp)

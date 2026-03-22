@@ -1,6 +1,5 @@
 package com.example.kt9
 
-import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -27,13 +27,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.SharingStarted
-import androidx.compose.material3.CardDefaults
 
 @Composable
 fun WeatherScreen(
@@ -42,7 +37,6 @@ fun WeatherScreen(
 ) {
     val context = LocalContext.current
 
-    // Состояние для городов
     var citiesData by remember {
         mutableStateOf(
             listOf(
@@ -53,22 +47,18 @@ fun WeatherScreen(
         )
     }
 
-    // Отслеживаем статус работы
     val workInfos by workManager
         .getWorkInfosForUniqueWorkLiveData("weather_work")
         .observeAsState()
 
-    // Проверяем, есть ли активные воркеры
     val isWorkRunning = workInfos?.any {
         it.state == WorkInfo.State.RUNNING
     } ?: false
 
-    // Проверяем, завершена ли работа
     val isWorkCompleted = workInfos?.all {
         it.state == WorkInfo.State.SUCCEEDED
     } == true && workInfos?.isNotEmpty() == true
 
-    // Обновляем статусы на основе данных из WorkManager
     workInfos?.forEach { workInfo ->
         if (workInfo.state == WorkInfo.State.RUNNING) {
             val city = workInfo.tags.firstOrNull()
@@ -98,12 +88,10 @@ fun WeatherScreen(
         }
     }
 
-    // Вычисляем среднюю температуру
     val avgTemp = if (citiesData.all { it.status == WeatherStatus.SUCCEEDED }) {
         citiesData.mapNotNull { it.temperature }.average().toInt()
     } else null
 
-    // Формируем описание погоды
     fun getWeatherDescription(temp: Int): String {
         return when {
             temp > 20 -> "ясно"
@@ -119,14 +107,12 @@ fun WeatherScreen(
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Заголовок
         Text(
             text = "Прогноз погоды",
             fontSize = 28.sp,
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
-        // Список городов
         LazyColumn(
             modifier = Modifier.weight(1f),
             verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -136,7 +122,6 @@ fun WeatherScreen(
             }
         }
 
-        // Статус загрузки
         if (isWorkRunning && !isWorkCompleted) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -151,7 +136,6 @@ fun WeatherScreen(
             }
         }
 
-        // Итоговый прогноз
         if (isWorkCompleted && avgTemp != null) {
             Card(
                 modifier = Modifier
@@ -186,7 +170,6 @@ fun WeatherScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Кнопка
         Button(
             onClick = onStartWork,
             enabled = !isWorkRunning,

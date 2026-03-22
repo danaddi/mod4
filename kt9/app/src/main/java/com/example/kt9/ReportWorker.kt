@@ -21,11 +21,9 @@ class ReportWorker(
 
         setForeground(createForegroundInfo("Формируем итоговый отчёт..."))
 
-        // Получаем все входные данные
         val temps = mutableListOf<Int>()
         val cities = mutableListOf<String>()
 
-        // Перебираем все ключи во входных данных
         inputData.keyValueMap.forEach { (key, value) ->
             when {
                 key.startsWith("city_") -> {
@@ -37,7 +35,6 @@ class ReportWorker(
             }
         }
 
-        // Ждем немного для имитации обработки
         delay(1000)
 
         val avg = if (temps.isNotEmpty()) temps.average() else 0.0
@@ -66,7 +63,6 @@ class ReportWorker(
     @RequiresPermission(Manifest.permission.POST_NOTIFICATIONS)
     private fun showFinalNotification(cities: List<String>, temps: List<Int>, avg: Double) {
 
-        // Формируем текст с результатами
         val resultsText = cities.zip(temps).joinToString("\n") {
             "${it.first}: ${it.second}°C"
         }
